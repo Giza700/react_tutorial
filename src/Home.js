@@ -1,22 +1,14 @@
-import { useState, useEffect } from "react";
+import React from 'react';
+//import { useState, useEffect } from "react";
 import FarmList from "./FarmList";
+import useFetch from "./useFetch";
 const Home = () => {
-    const [farm,setFarm] = useState(null);
-const [name,setname] = useState('star fruit');
-
-    const handleDelete = (id) => {
-        const newFarm = farm.filter(farm => farm.id !== id);
-        setFarm(newFarm);
-    }
-    useEffect(() =>{
-        fetch('http://localhost:8000/farms')
-        .then(res => {
-           return res.json()
-        })   
-    },[]);
+    const {data:farm,loading,error} = useFetch('http://localhost:8000/farmers');
     return ( 
         <div className="Home">
-            <FarmList thefarms={farm} title = "not sister" handleDelete = {handleDelete}/>
+            {error && <div>{error}</div>}
+            {loading && <div>loading...</div>}
+            {farm && <FarmList thefarms={farm} title = "not sister"/>}
         </div>
         
      );

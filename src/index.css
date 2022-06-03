@@ -48,3 +48,6 @@
   color: green;
   margin-bottom: 8px;
 }
+.farm-preview a{
+  text-decoration: none;
+}

@@ -1,4 +1,6 @@
-const FarmList = ({thefarms,title, handleDelete}) => {
+import React from 'react';
+import { Link } from 'react-router-dom';
+const FarmList = ({thefarms,title }) => {
     //const farms = props.thefarms;
     //const titler = props.title;
     //console.log(props,farms);
@@ -8,9 +10,12 @@ const FarmList = ({thefarms,title, handleDelete}) => {
             <h2>{title}</h2>
             {thefarms.map((farms) => 
                 <div className="farm-preview" key={farms.id}>
-                    <h2>{farms.title}</h2>
-                    <p>hi there {farms.head}</p>
-                    <button onClick={() => handleDelete(farms.id)}>Delete List</button>
+                    <Link to={`/farms/${farms.id}`} >
+                        <h2>{farms.title}</h2>
+                        <p>hi there {farms.head}</p>
+                    </Link>
+                   
+                    
                 </div>  
             )} 
         </div>
