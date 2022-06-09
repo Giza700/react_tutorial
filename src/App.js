@@ -4,6 +4,7 @@ import Home from './Home';
 import Create from './Create';
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 import FarmDetail from './FarmDetail';
+import Error404 from './Error404';
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
             </Route>
             <Route path="/farms/:id">
               <FarmDetail/>
+            </Route>
+            <Route path = "*">
+              <Error404/>
             </Route>
           </Switch>
         </div>
